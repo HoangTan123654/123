@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web của tôi - Bài tập về nhà 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Skip to Main Content Link */
+        /* This link is visually hidden until focused, improving accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #007bff;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            text-decoration: none;
+            border-radius: 0 0 5px 0;
+            transition: top 0.3s ease-in-out;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #0056b3;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2.5em;
+        }
+
+        /* Navigation Styling (Mới được thêm vào theo yêu cầu) */
+        nav {
+            background-color: #34495e;
+            padding: 0.8rem 0;
+            text-align: center;
+            margin: 20px auto; /* Căn giữa nav */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Yêu cầu: Thay đổi phần tử điều hướng để sử dụng inline-block và có chiều rộng khoảng 80%. */
+            display: inline-block; /* Đặt là inline-block */
+            width: 80%; /* Đặt chiều rộng khoảng 80% */
+            vertical-align: top; /* Căn chỉnh theo chiều dọc nếu có các phần tử inline-block khác */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Sử dụng flexbox cho các mục menu */
+            justify-content: center; /* Căn giữa các mục menu */
+            flex-wrap: wrap; /* Cho phép các mục xuống dòng nếu không đủ chỗ */
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            /* Yêu cầu: Chú thích ra kiểu hiện có cho phần tử li. */
+            /*
+            list-style-type: square;
+            color: #ecf0f1;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            */
+            font-weight: 600;
+        }
+
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #1abc9c;
+            transform: translateY(-2px);
+        }
+
+        /* Yêu cầu: Sử dụng bộ chọn hậu duệ để chỉ tạo kiểu cho hình ảnh trong điều hướng có chiều rộng khoảng 10%. */
+        nav img {
+            width: 10%; /* Đặt chiều rộng cho hình ảnh bên trong nav */
+            height: auto; /* Giữ tỷ lệ khung hình */
+            vertical-align: middle; /* Căn chỉnh hình ảnh với văn bản */
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        /* Styling for "Danh sách sở thích" list from original image */
+        .hobbies-list ul {
+            list-style: disc; /* Vẫn giữ kiểu dấu chấm đĩa */
+            margin-left: 20px;
+            padding: 0;
+        }
+        .hobbies-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Yêu cầu: Tạo kiểu cho lớp lưới để sử dụng lưới hai cột trong đó mỗi cột xấp xấp 40%. */
+        /* Yêu cầu: Chơi với các giá trị thuộc tính justify-content, align-items và row-gap để sao chép giao diện của ảnh chụp màn hình ở trên. */
+        .grid {
+            display: grid;
+            /* Hai cột, mỗi cột khoảng 40% của vùng chứa. Sử dụng auto-fit và minmax để linh hoạt hơn */
+            grid-template-columns: repeat(auto-fit, minmax(calc(40% - 20px), 1fr));
+            gap: 20px; /* Khoảng cách giữa các mục lưới (cả hàng và cột) */
+            justify-content: center; /* Căn giữa toàn bộ lưới trong vùng chứa */
+            align-items: start; /* Căn chỉnh các mục theo chiều dọc ở đầu vùng lưới của chúng */
+            row-gap: 40px; /* Khoảng cách cụ thể cho các hàng để sao chép giao diện ảnh (có thể điều chỉnh) */
+            padding: 15px;
+            border: 1px dashed #a0a0a0;
+            border-radius: 10px;
+            background-color: #ebf0f0;
+        }
+
+        .grid-item {
+            background-color: #e0e6e6;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Yêu cầu: Sử dụng bộ chọn hậu duệ để chỉ tạo kiểu cho các hình ảnh trong lớp lưới có chiều rộng là 100%. */
+        .grid img {
+            width: 100%; /* Hình ảnh bên trong .grid sẽ chiếm 100% chiều rộng của phần tử cha */
+            height: auto; /* Giữ tỷ lệ khung hình */
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: block; /* Loại bỏ khoảng trắng thừa bên dưới hình ảnh */
+        }
+
+        /* Yêu cầu: Tạo kiểu cho lớp flex để sử dụng flex. Chơi với các giá trị thuộc tính flex-wrap và justify-content để sao chép giao diện của ảnh chụp màn hình ở trên. */
+        .flex {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các mục flex xuống dòng nếu không đủ chỗ */
+            justify-content: space-around; /* Phân phối đều các mục trên dòng với khoảng trống xung quanh */
+            gap: 25px; /* Khoảng cách giữa các mục flex */
+            padding: 15px;
+            border: 1px dashed #a0a0a0;
+            border-radius: 10px;
+            background-color: #ebf0f0;
+        }
+
+        .flex-item {
+            background-color: #d8e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            flex: 1 1 220px; /* flex-grow, flex-shrink, flex-basis: Cho phép các mục tăng/giảm kích thước và đặt chiều rộng cơ sở */
+            min-width: 180px; /* Đảm bảo các mục không quá nhỏ */
+            max-width: 320px; /* Ngăn các mục quá rộng trên một hàng */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .flex-item:hover {
+            background-color: #cee0e0;
+            transform: scale(1.02);
+        }
+
+        /* Đảm bảo .flex img styling không bị ghi đè bởi .grid img */
+        .flex img {
+            max-width: 100%; /* Đảm bảo hình ảnh không tràn ra ngoài vùng chứa flex-item của chúng */
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav {
+                width: 95%; /* Điều chỉnh chiều rộng nav cho màn hình nhỏ hơn */
+                display: block; /* Chuyển nav thành block trên màn hình nhỏ */
+            }
+            nav ul {
+                flex-direction: column; /* Xếp chồng các mục nav theo chiều dọc */
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .grid {
+                grid-template-columns: 1fr; /* Một cột duy nhất trên màn hình nhỏ */
+                padding: 10px;
+            }
+            .flex {
+                padding: 10px;
+            }
+            .flex-item {
+                flex-basis: 100%; /* Toàn bộ chiều rộng cho các mục flex trên màn hình nhỏ */
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#mainContent" class="skip-link">Chuyển đến Nội dung chính</a>
+
+    <header>
+        <h1>Chào mừng đến với Trang Web của tôi</h1>
+        <p>Đây là phiên bản được cải tiến từ Bài tập về nhà 1 !</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#"><img src="https://placehold.co/30x30/1abc9c/FFFFFF?text=Menu" alt="Home Icon">Trang chủ</a></li>
+            <li><a href="#hobbies">Sở thích</a></li>
+            <li><a href="#images">Hình ảnh</a></li>
+            <li><a href="#useful-links">Liên kết</a></li>
+            <li><a href="#flex-section">Bố cục Flex</a></li>
+        </ul>
+    </nav>
+
+    <main id="mainContent">
+        <section class="hobbies-list" id="hobbies">
+            <h2>Danh sách sở thích</h2>
+            <ul>
+                <li>Đọc sách</li>
+                <li>Du lịch</li>
+                <li>Lập trình web</li>
+                <li>Học hỏi công nghệ mới</li> </ul>
+        </section>
+
+        <section id="images">
+            <h2>Hình ảnh yêu thích</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Hình ảnh 1</h3>
+                    <img src="https://lastfm.freetls.fastly.net/i/u/ar0/52fa02d1eaac9b86d61be53ce7dee8f3.jpg" alt="Hình ảnh yêu thích 1">
+                    <p>Hình ảnh về một người đàn ông trong bộ vest lịch lãm.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Hình ảnh 2</h3>
+                    <img src="https://th.bing.com/th/id/OIP.zQlzVvjo9vHwFzHzS4QhQgHaE7?rs=1&pid=ImgDetMain" alt="Hình ảnh yêu thích 2">
+                    <p>Một bức ảnh ấn tượng với biển xanh.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Hình ảnh 3</h3>
+                    <img src="https://th.bing.com/th/id/OIP.ecwiocR4rUJaz2MXZo-G3gHaEo?rs=1&pid=ImgDetMain" alt="Hình ảnh yêu thích 3">
+                    <p>Hình ảnh môn thể thao yêu thích.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Hình ảnh 4</h3>
+                    <img src="https://www.totalprosports.com/wp-content/uploads/2025/05/Donovan-Mitchell-1-1.jpg" alt="Hình ảnh yêu thích 4">
+                    <p>Và đây là cầu thủ yêu thích.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="flex-section">
+            <h2> Flexbox </h2>
+            <div class="flex">
+                <div class="flex-item">
+                    <h3>Mục Flex 1</h3>
+                    <img src="https://images.fineartamerica.com/images-medium-large-5/basketball-court-sunset-jun-pinzon.jpg" alt="Mục Flex A">
+                    <p>Kinh nghiệm chơi bóng rổ 5 năm.</p>
+                </div>
+                <div class="flex-item">
+                    <h3>Mục Flex 2</h3>
+                    <img src="https://th.bing.com/th/id/R.9fec111109f5f53ce4904ca01a4acdfa?rik=l4QmgdDBxlBa1g&pid=ImgRaw&r=0" alt="Mục Flex B">
+                    <p>Từng học tại FPT University.</p>
+                </div>
+                <div class="flex-item">
+                    <h3>Mục Flex 4</h3>
+                    <img src="https://staticg.sportskeeda.com/editor/2018/12/45659-15444428926591-800.jpg" alt="Mục Flex C">
+                    <p>Từng đạt nhiều danh hiệu trong bóng rổ.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="useful-links">
+            <h2>Liên kết hữu ích</h2>
+            <p>Truy cập <a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer">W3Schools</a> để học thêm về HTML và CSS.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Trang Web của tôi. Tất cả quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>
